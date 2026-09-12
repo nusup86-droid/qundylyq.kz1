@@ -1,0 +1,38 @@
+const values=[
+["🤝","Бірлік","Қоғамдағы ынтымақтастық, өзара құрмет және ортақ мақсат.","Бірлік бар жерде — береке бар."],
+["♥","Отбасы","Ұрпақтар сабақтастығы, қамқорлық және отбасылық дәстүр.","Отбасы — құндылықтың бастауы."],
+["🌿","Табиғат","Эко-саналы өмір салты, табиғатты қорғау және жауапкершілік.","Табиғатты қорғау — болашақты қорғау."],
+["А","Қазақ тілі","Тіл — ұлт қазынасы, мәдениетті жеткізудің маңызды құралы.","Тіл арқылы тарих пен болашақ жалғасады."],
+["✦","Мәдениет","Өнер, музыка, қолөнер және ұлттық мұра.","Өнер — ұрпаққа қалатын рухани мұра."],
+["⌛","Тарих","Өткенді білу, тарихи жадыны сақтау және сабақ алу.","Тарихын білген ұрпақ болашағын нық құрады."],
+["☼","Рухани құндылық","Адалдық, мейірім, ар-ұят, ізгілік пен жауапкершілік.","Рухани байлық — адамның ішкі тірегі."],
+["⌂","Туған жер","Елге, жерге, қоғамға жанашырлық және азаматтық жауапкершілік.","Туған жерге қызмет ету — үлкен құрмет."],
+["♪","Ұлттық өнер","Домбыра, ұлттық музыка, қолөнер, әдебиет және шығармашылық.","Ұлттық өнер — ұрпақтар арасындағы көпір."]
+];
+const grid=document.getElementById('valueGrid');
+grid.innerHTML=values.map((v,i)=>`<article class="value-card"><div class="value-icon">${v[0]}</div><h3>${v[1]}</h3><p>${v[2]}</p><button onclick="valueInfo(${i})">Толығырақ →</button></article>`).join('');
+
+function openModal(html){document.getElementById('modalContent').innerHTML=html;document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function valueInfo(i){let v=values[i];openModal(`<span class="eyebrow">QÚNDYLYQ</span><h2>${v[0]} ${v[1]}</h2><p>${v[2]}</p><div style="padding:18px;background:#fbf6e9;border-radius:12px;font-family:'Playfair Display';font-style:italic">${v[3]}</div><p>Бұл құндылықты күнделікті өмірде қалай көрсетуге болатынын өзің ойлап көр.</p>`)}
+function openSearch(){openModal(`<span class="eyebrow">ІЗДЕУ</span><h2>QÚNDYLYQ ішінен іздеу</h2><input id="searchInput" autofocus placeholder="Мысалы: отбасы, тіл, табиғат..." oninput="doSearch(this.value)"><div id="searchResults" style="margin-top:18px"></div>`)}
+function doSearch(q){q=q.toLowerCase().trim();let all=[...values.map(v=>v[1]+' — '+v[2]),'Video Reels','Сценарий: Таңдау','Story формат','Quiz','Challenge','Сұхбат','Әже тарихы','Әке үлесі','Ана үлесі','Табиғат','Қоғам','Мәдениет'];let r=q?all.filter(x=>x.toLowerCase().includes(q)):[];document.getElementById('searchResults').innerHTML=r.length?r.map(x=>`<div style="padding:9px 0;border-bottom:1px solid #e6ddc9">🔎 ${x}</div>`).join(''):(q?'Ештеңе табылмады. Басқа сөзбен іздеп көр.':'Іздеу сөзін енгізіңіз.')}
+function openLogin(){openModal(`<span class="eyebrow">QÚNDYLYQ</span><h2>Кіру</h2><p>Платформаның жеке мүмкіндіктерін пайдалану үшін деректеріңді енгіз.</p><input placeholder="Электрондық пошта"><br><br><input type="password" placeholder="Құпиясөз"><br><br><button class="primary" onclick="showToast('Кіру функциясы демо режимінде');closeModal()">Кіру</button>`)}
+function openJoin(){openModal(`<span class="eyebrow">БІРГЕ</span><h2>QÚNDYLYQ қауымдастығына қосыл</h2><input id="joinName" placeholder="Аты-жөнің"><br><br><input id="joinMail" placeholder="Электрондық пошта"><br><br><button class="primary" onclick="join()">Қосылу →</button>`)}
+function join(){let n=document.getElementById('joinName').value.trim();if(!n)return showToast('Атыңды енгізші');localStorage.setItem('qundylyqName',n);closeModal();showToast(`Қош келдің, ${n}!`)}
+function openFeedback(){openModal(`<span class="eyebrow">КЕРІ БАЙЛАНЫС</span><h2>Пікіріңді қалдыр</h2><textarea id="feedback" placeholder="Платформа туралы ойың..."></textarea><br><br><button class="primary" onclick="saveFeedback()">Жіберу</button>`)}
+function saveFeedback(){let x=document.getElementById('feedback').value.trim();if(x)localStorage.setItem('qundylyqFeedback',x);closeModal();showToast('Пікірің сақталды. Рақмет!')}
+function familyPrompt(t){openModal(`<span class="eyebrow">ҰРПАҚТАР ДИАЛОГЫ</span><h2>${t}</h2><p>Отбасыңдағы үлкен адамнан ұлттық құндылыққа байланысты бір оқиғаны сұрап көр.</p><div style="padding:18px;background:#fbf6e9;border-radius:12px"><b>Сұрақ үлгісі:</b><br>«Сіздің бала кезіңізде қандай дәстүр ерекше маңызды болды? Ол бүгін қалай көрінеді?»</div>`)}
+function generateIdea(){let v=document.getElementById('ideaValue').value,f=document.getElementById('ideaFormat').value,t=document.getElementById('ideaText').value.trim();let suggestion=t?`«${v}» бағыты бойынша «${f}» форматында: ${t}`:`«${v}» тақырыбында ${f} жаса. Мысалы, өз отбасыңнан немесе күнделікті өмірден нақты бір оқиғаны көрсет.`;document.getElementById('ideaResult').innerHTML=`💡 ${suggestion}`;localStorage.setItem('qundylyqIdea',suggestion)}
+function saveContribution(){let t=document.getElementById('contribution').value.trim();if(!t)return showToast('Алдымен әрекетіңді жаз.');localStorage.setItem('qundylyqContribution',t);document.getElementById('savedContribution').innerHTML=`<p>✓ Сақталды: <b>${t}</b></p>`;showToast('Өз үлесің сақталды!')}
+function openChoice(){openModal(`<span class="eyebrow">СЦЕНАРИЙ</span><h2>«ТАҢДАУ»</h2><p><b>Жағдай:</b> Досың ұлттық дәстүр туралы қате ақпарат таратып жатыр. Сен не істейсің?</p><button class="option" onclick="choice('A')">A — Елемей өте шығамын.</button><button class="option" onclick="choice('B')">B — Дұрыс ақпаратты тексеріп, сыпайы түсіндіремін.</button><button class="option" onclick="choice('C')">C — Достарыммен бірге талқылап, дереккөз ұсынамын.</button><div id="choiceResult"></div>`)}
+function choice(x){document.getElementById('choiceResult').innerHTML=`<div style="margin-top:18px;padding:15px;background:#e8f3f1;border-radius:10px">${x==='A'?'Ойлан: үнсіз қалу мәселені шешпеуі мүмкін.':'Жақсы таңдау! Ақпаратты тексеру, құрметпен сөйлесу және дерек ұсыну — жауапты әрекет.'}</div>`}
+const quiz=[['Ұлттық құндылық дегеніміз не?',['Тек мерекелер жиынтығы','Ұрпақтан ұрпаққа жалғасатын мәдени, рухани және қоғамдық құндылықтар жүйесі','Тек киім үлгісі'],'B'],['Қазақ тілінің құндылығы неде?',['Ұлттық мәдениет пен ойды жеткізудің маңызды құралы','Тек мектеп пәні','Тек ресми құжат тілі'],'A'],['Отбасылық дәстүрдің маңызы қандай?',['Ұрпақтар сабақтастығын нығайтады','Маңызы жоқ','Тек үлкендерге керек'],'A']];
+let qi=0,score=0;
+function openQuiz(){qi=0;score=0;renderQuiz()}
+function renderQuiz(){if(qi>=quiz.length){openModal(`<span class="eyebrow">НӘТИЖЕ</span><h2>Quiz аяқталды!</h2><p>Сенің нәтижең: <b>${score}/${quiz.length}</b></p><button class="primary" onclick="closeModal()">Жабу</button>`);return}let q=quiz[qi];openModal(`<span class="eyebrow">QUIZ ${qi+1}/${quiz.length}</span><h2>${q[0]}</h2>${q[1].map((o,i)=>`<button class="option" onclick="answer('${String.fromCharCode(65+i)}')">${String.fromCharCode(65+i)} — ${o}</button>`).join('')}`)}
+function answer(a){if(a===quiz[qi][3])score++;qi++;renderQuiz()}
+function showToast(t){let e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500)}
+function toggleMenu(){let n=document.querySelector('nav');n.style.display=n.style.display==='flex'?'none':'flex';n.style.position='absolute';n.style.top='76px';n.style.left='0';n.style.right='0';n.style.background='white';n.style.padding='20px';n.style.flexDirection='column'}
+window.addEventListener('load',()=>{let c=localStorage.getItem('qundylyqContribution');if(c){document.getElementById('savedContribution').innerHTML=`<p>✓ Бұрынғы жазбаң: <b>${c}</b></p>`}let n=localStorage.getItem('qundylyqName');if(n)showToast(`Қайта қош келдің, ${n}!`)});

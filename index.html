@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#075b68">
+<title>QÚNDYLYQ — Ұлттық құндылықтар</title>
+<meta name="description" content="QÚNDYLYQ — ұлттық құндылықтарды заманауи форматта танытатын интерактивті платформа.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ornament ornament-left"></div><div class="ornament ornament-right"></div>
+
+<header class="header">
+  <a class="brand" href="#home"><span class="brand-mark">✺</span><span><b>QÚNDYLYQ</b><small>Ұлттық құндылық — жарқын болашақ!</small></span></a>
+  <nav>
+    <a href="#values">Құндылықтар</a><a href="#formats">Форматтар</a><a href="#family">Отбасы</a><a href="#actions">Іс жүзінде</a><a href="#sources">Дереккөздер</a>
+  </nav>
+  <div class="head-actions"><button class="search-open" onclick="openSearch()">⌕ <span>Іздеу</span></button><button class="ghost" onclick="openLogin()">Кіру</button><button class="primary" onclick="openJoin()">Қосылу</button></div>
+  <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="eyebrow">🇰🇿 QÚNDYLYQ</span>
+    <h1>ҰЛТТЫҚ ҚҰНДЫЛЫҚ<br>БҮГІН ҚАЛАЙ КӨРІНЕДІ?</h1>
+    <p>Жасөспірімдерге арналған интерактивті тәрбиелік және әлеуметтік платформа</p>
+    <div class="hero-buttons"><button class="primary big" onclick="scrollToId('values')">🚀 Бастау</button><button class="light big" onclick="scrollToId('formats')">▶ Видеоларды қарау</button></div>
+    <div class="quote">«Кіші қадам — үлкен өзгеріс!»</div>
+  </div>
+  <div class="hero-badge"><b>09</b><span>ұлттық құндылық</span></div>
+</section>
+
+<section class="stats">
+  <div><b>09</b><span>құндылық бағыты</span></div><div><b>06</b><span>интерактивті формат</span></div><div><b>03</b><span>нақты әрекет бағыты</span></div><div><b>∞</b><span>идеяға мүмкіндік</span></div>
+</section>
+
+<section id="values" class="section">
+  <div class="section-head"><div class="num">1</div><div><span class="eyebrow">Біздің негізіміз</span><h2>Ұлттық құндылықтар</h2><p>Біздің болмысымызды айқындайтын басты бағыттар</p></div></div>
+  <div id="valueGrid" class="grid cards"></div>
+</section>
+
+<section id="formats" class="section alt">
+  <div class="section-head"><div class="num">2</div><div><span class="eyebrow">Сен үшін интерактивті алаң</span><h2>Заманауи форматтар</h2><p>Қара, таңда, ойлан, жаса!</p></div></div>
+  <div class="format-grid">
+    <article class="format-card"><div class="format-icon">▣</div><h3>Video Reels</h3><p>Қысқа әрі мазмұнды роликтер арқылы құндылықтарды таны.</p><button class="secondary" onclick="showToast('Видео бөлімі жақында толықтырылады')">Тамашалау →</button></article>
+    <article class="format-card featured"><div class="format-icon">⌘</div><h3>Сценарий: «ТАҢДАУ»</h3><p>Күнделікті жағдайларда шешім қабылдап көр.</p><button class="secondary" onclick="openChoice()">Ойынды бастау →</button></article>
+    <article class="format-card"><div class="format-icon">◈</div><h3>Story формат</h3><p>Күнделікті өмірден эстетикалық әрі мағыналы оқиғалар.</p><button class="secondary" onclick="showToast('Story идеялары ашылды')">Оқу →</button></article>
+    <article class="format-card"><div class="format-icon">?</div><h3>Quiz</h3><p>Ұлттық құндылықтар туралы біліміңді тексер.</p><button class="secondary" onclick="openQuiz()">Quiz бастау →</button></article>
+    <article class="format-card"><div class="format-icon">★</div><h3>Challenge</h3><p>Бір жақсы әрекет жаса да, өзгеге шабыт бер.</p><button class="secondary" onclick="scrollToId('actions')">Қатысу →</button></article>
+    <article class="format-card"><div class="format-icon">◉</div><h3>Сұхбат</h3><p>Үлкендердің әңгімесін тыңдап, отбасы тарихын зертте.</p><button class="secondary" onclick="scrollToId('family')">Тыңдау →</button></article>
+  </div>
+</section>
+
+<section id="family" class="section">
+  <div class="section-head"><div class="num">3</div><div><span class="eyebrow">Ұрпақтар диалогы</span><h2>Менің отбасымның үлесі</h2><p>Отбасы — құндылықты жеткізетін алғашқы орта.</p></div></div>
+  <div class="family-grid">
+    <article class="family-card"><div class="avatar">Ә</div><h3>Әже тарихы</h3><p>Дәстүр, әңгіме, бата мен өнеге туралы естеліктер.</p><button onclick="familyPrompt('Әже тарихы')">Толығырақ →</button></article>
+    <article class="family-card"><div class="avatar">Ә</div><h3>Әке үлесі</h3><p>Еңбек, жауапкершілік, елге қызмет ету туралы ой.</p><button onclick="familyPrompt('Әке үлесі')">Толығырақ →</button></article>
+    <article class="family-card"><div class="avatar">А</div><h3>Ана үлесі</h3><p>Мейірім, отбасы, ұлттық тәрбие мен жылылық.</p><button onclick="familyPrompt('Ана үлесі')">Толығырақ →</button></article>
+  </div>
+</section>
+
+<section class="section idea">
+  <div class="section-head"><div class="num">4</div><div><span class="eyebrow">Өз идеяңды іске асыр</span><h2>Ал мен бүгін? — Менің идеям</h2><p>Құндылықты тек білу емес, әрекетке айналдыру маңызды.</p></div></div>
+  <div class="idea-box">
+    <div><label>Қай құндылық?</label><select id="ideaValue"><option>Бірлік</option><option>Отбасы</option><option>Табиғат</option><option>Қазақ тілі</option><option>Мәдениет</option><option>Тарих</option><option>Рухани құндылық</option><option>Туған жер</option><option>Ұлттық өнер</option></select></div>
+    <div><label>Формат</label><select id="ideaFormat"><option>Қысқа видео</option><option>Story</option><option>Challenge</option><option>Экологиялық әрекет</option><option>Мәдени бастама</option></select></div>
+    <div class="wide"><label>Менің идеям</label><input id="ideaText" placeholder="Мысалы: әжемнен ұлттық салт туралы сұхбат аламын..."></div>
+    <button class="primary" onclick="generateIdea()">Идеямды дамыту →</button>
+    <div id="ideaResult" class="result wide"></div>
+  </div>
+</section>
+
+<section id="actions" class="section alt">
+  <div class="section-head"><div class="num">5</div><div><span class="eyebrow">Нақты жасалған істер</span><h2>Іс жүзінде & менің үлесім</h2><p>Жақсы ой — нақты әрекетке айналғанда ғана өзгеріс басталады.</p></div></div>
+  <div class="action-grid">
+    <article><span>🌿</span><h3>Табиғат</h3><p>Таза аула, ағаш отырғызу, табиғатты қорғау.</p></article>
+    <article><span>🤝</span><h3>Қоғам</h3><p>Қайырымдылық, көмек және өзара қолдау.</p></article>
+    <article><span>🎨</span><h3>Мәдениет</h3><p>Өнер, музыка, қолөнер және мәдени мұра.</p></article>
+  </div>
+  <div class="contribution">
+    <h3>«Мен бүгін не істей аламын?»</h3><textarea id="contribution" placeholder="Өз әрекетіңді жаз..."></textarea>
+    <button class="primary" onclick="saveContribution()">Сақтау</button>
+    <div id="savedContribution"></div>
+  </div>
+</section>
+
+<section class="section join-section">
+  <div class="join-copy"><span class="eyebrow">БІРГЕ</span><h2>Жақсы өзгерісті бірге бастайық</h2><p>Өз ойыңмен бөліс, идея ұсын, басқа қатысушыларға шабыт бер.</p></div>
+  <div class="join-actions"><button class="primary big" onclick="openJoin()">Қосылу</button><button class="ghost big" onclick="openFeedback()">Пікір ұсыну</button></div>
+</section>
+
+<section class="section research-context" id="context"><div class="section-head"><div><span class="eyebrow">ЗЕРТТЕУ КОНТЕКСТІ</span><h2>Құндылық — <em>тірі жүйе</em></h2></div><p>Ұлттық құндылықтарды сақтау ғана емес, олардың мәнін түсініп, қазіргі өмірде жалғастыру маңызды.</p></div><div class="context-grid"><div><b>ПОЗНАВАТЕЛЬДІК</b><p>Құндылықтың мағынасын түсіну: тіл, тарих, дәстүр, мәдениет, отбасы.</p></div><div><b>ПРАКТИКАЛЫҚ</b><p>Құндылықты нақты әрекетке айналдыру: көмектесу, сақтау, қолдану, бөлісу.</p></div><div><b>ЭМОЦИЯЛЫҚ</b><p>Құндылықты күнделікті әдетке, жеке ұстанымға және жауапты таңдауға айналдыру.</p></div></div></section>
+<section class="section sources-section" id="sources"><div class="section-head"><div><span class="eyebrow">ДЕРЕККӨЗДЕР</span><h2>Сенімді <em>негіз</em></h2></div><p>Контент зерттеу материалы және ашық ресми дереккөздер негізінде толықтырылды.</p></div><div class="source-grid"><a href="https://www.gov.kz/memleket/entities/edu/press/news/details/1035793?lang=ru" target="_blank"><b>«Адал азамат»</b><small>ҚР Оқу-ағарту министрлігі ↗</small></a><a href="https://www.gov.kz/memleket/entities/edu/press/news/details/960214?lang=ru" target="_blank"><b>Тәрбие экожүйесі</b><small>ҚР Оқу-ағарту министрлігі ↗</small></a><a href="https://www.gov.kz/memleket/entities/edu/press/news/details/1187416?lang=ru" target="_blank"><b>Заманауи дизайн-код</b><small>ҚР Оқу-ағарту министрлігі ↗</small></a><a href="https://e-history.kz/ru" target="_blank"><b>Қазақстан тарихы</b><small>e-history.kz ↗</small></a></div></section>
+
+</main>
+
+<footer>
+  <div class="footer-brand"><span class="brand-mark">✺</span><div><b>QÚNDYLYQ</b><small>Ұлттық құндылық — жарқын болашақ!</small></div></div>
+  <div class="footer-links"><a href="#values">Құндылықтар</a><a href="#formats">Форматтар</a><a href="#family">Отбасы</a><a href="#actions">Іс жүзінде</a><a href="#sources">Дереккөздер</a></div>
+  <div class="footer-note">Болашақ Қазақстан жастардың бүгінгі кішкентай қадамынан құралады!</div>
+</footer>
+
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body></html>
